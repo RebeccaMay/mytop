@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <ncurses.h>
+#include "../src/utils/format.h"
 
 using namespace std;
 
@@ -44,7 +45,8 @@ int main() {
 
     // Display the counter using printw (an ncurses function)
     printw("Behold, the number:\n%d", tick++);
-
+    table_names();
+    
     // Redraw the screen.
     refresh();
 

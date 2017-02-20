@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <ncurses.h>
 
 
 /*
@@ -15,4 +16,9 @@ char * thread_info(SystemInfo& sys);
 char * memory_info();
 */
 
-char * table_names();
+void table_names(){
+  static char tbl_names[250];
+  sprintf(tbl_names, "%-5d %-7s %c %-1s %-5s %-8s %s", "PID", "Memory", "S", "CPU%", "Time", "Command" );
+
+  printw("%s", tbl_names);
+}
