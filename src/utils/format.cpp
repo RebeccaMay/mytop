@@ -18,7 +18,13 @@ void uptime_info(double uptime){
   printw("%s", uptime_buffer); 
 }
 	      
-void loadavg_info(LoadAverageInfo& loadavg);
+void loadavg_info(LoadAverageInfo& loadavg){
+  static char loadavg_buffer[36];
+  sprintf(loadavg_buffer, "load average: %.2f %.2f %.2f", loadavg.one_min, loadavg.five_mins, loadavg.fifteen_mins);
+
+  printw("%s", loadavg_buffer);
+}
+
 void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
 void proc_info(SystemInfo& sys);
 void thread_info(SystemInfo& sys);

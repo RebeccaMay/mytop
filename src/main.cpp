@@ -44,6 +44,8 @@ int main() {
     SystemInfo current_sys = get_system_info();
     uptime_info(current_sys.uptime);
     printw("\n");
+    loadavg_info(current_sys.load_average);
+    printw("\n");
     table_names();
     
     // Redraw the screen.
