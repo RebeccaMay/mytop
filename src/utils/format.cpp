@@ -7,14 +7,13 @@
 #include <ncurses.h>
 
 
-/*
-char * uptime_info(double uptime);
-char * loadavg_info(LoadAverageInfo& loadavg);
-char * cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
-char * proc_info(SystemInfo& sys);
-char * thread_info(SystemInfo& sys);
-char * memory_info();
-*/
+
+void uptime_info(double uptime);
+void loadavg_info(LoadAverageInfo& loadavg);
+void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
+void proc_info(SystemInfo& sys);
+void thread_info(SystemInfo& sys);
+void  memory_info();
 
 void table_names(){
   static char tbl_names[250];
