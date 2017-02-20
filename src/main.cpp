@@ -38,13 +38,12 @@ int main() {
   // immediately respond to user input while not blocking indefinitely.
   timeout(1000);
 
-  int tick = 1;
-
   while (true) {
     wclear(stdscr);
 
-    // Display the counter using printw (an ncurses function)
-    printw("Behold, the number:\n%d", tick++);
+    SystemInfo current_sys = get_system_info();
+    uptime_info(current_sys.uptime);
+    printw("\n");
     table_names();
     
     // Redraw the screen.

@@ -15,3 +15,5 @@ void thread_info(SystemInfo& sys);
 void  memory_info();
 
 void table_names();
+
+void table_info(ProcessInfo& proc);
