@@ -36,14 +36,25 @@ void proc_info(SystemInfo& sys){
 }
 
 
-void thread_info(SystemInfo& sys);                //FIXME*************
+void thread_info(SystemInfo& sys){
+  static char thread_buffer[80];
+  sprintf(thread_buffer, "%d total threads, %d user threads, %d kernel", sys.num_threads, sys.num_user_threads, sys.num_kernel_threads);
+
+  printw("%s", thread_buffer);
+}
 
 
-void  memory_info();                                  //FIXME******
+void  memory_info(){
+  static char memory_buffer[80];
+  MemoryInfo memory = get_memory_info();
+  sprintf(memory_buffer, "MEM: %llu total, %llu used, %llu available", memory.total_memory, (memory.total_memory - memory.free_memory), memory.free_memory);
+
+  printw("%s", memory_buffer);
+}
 
 void table_names(){
   static char tbl_names[250];
-  sprintf(tbl_names, "%-5s %-7s %c %-1s %-5s %-8s %s", "PID", "Memory", "S", "CPU%", "Time", "Command");
+  sprintf(tbl_names, "%-5s %-7s %-1s %-5s %-8s %s", "PID", "Memory", "S", "CPU%", "Time", "Command");
 
   printw("%s", tbl_names);
 }

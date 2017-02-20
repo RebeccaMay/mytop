@@ -48,6 +48,10 @@ int main() {
     printw("\n");
     proc_info(current_sys);
     printw("\n");
+    thread_info(current_sys);
+    printw("\n");
+    memory_info();
+    printw("\n");
     table_names();
     
     // Redraw the screen.
