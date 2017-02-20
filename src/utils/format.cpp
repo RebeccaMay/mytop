@@ -25,10 +25,21 @@ void loadavg_info(LoadAverageInfo& loadavg){
   printw("%s", loadavg_buffer);
 }
 
-void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
-void proc_info(SystemInfo& sys);
-void thread_info(SystemInfo& sys);
-void  memory_info();
+void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);       //FIXME*******
+
+
+void proc_info(SystemInfo& sys){
+  static char proc_buffer[80];
+  sprintf(proc_buffer, "%d total processes, %d running processes", sys.num_processes, sys.num_running);
+
+  printw("%s", proc_buffer);
+}
+
+
+void thread_info(SystemInfo& sys);                //FIXME*************
+
+
+void  memory_info();                                  //FIXME******
 
 void table_names(){
   static char tbl_names[250];

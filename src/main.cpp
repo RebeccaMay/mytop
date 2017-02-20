@@ -46,6 +46,8 @@ int main() {
     printw("\n");
     loadavg_info(current_sys.load_average);
     printw("\n");
+    proc_info(current_sys);
+    printw("\n");
     table_names();
     
     // Redraw the screen.
