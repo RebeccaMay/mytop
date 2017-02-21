@@ -13,7 +13,10 @@ void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
 void proc_info(SystemInfo& sys);
 void thread_info(SystemInfo& sys);
 void  memory_info();
-
 void table_names();
-
 void table_info(ProcessInfo& proc);
+
+char * format_time(int seconds);
+char * format_bytes(unsigned long long amt);
+
+

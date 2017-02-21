@@ -61,8 +61,37 @@ void table_names(){
 
 void table_info(ProcessInfo& proc){
   static char table_line[256];
-  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid, proc.rss, proc.state, proc.cpu_percent, (proc.utime + proc.stime), proc.command_line);
+  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid,format_bytes( proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)/sysconf(_SC_CLK_TCK)), proc.command_line.c_str());
 
    printw("%s", table_line);
 }
 
+char * format_time(int secs){
+  static char buf[10];
+  sprintf(buf, "%02d:%02d:%02d", secs/3600, (secs/60) % 60, secs % 60);
+  return buf;
+}
+
+char * format_bytes(unsigned long long amt){
+  static size_t state;
+  static char buffers[16][24];
+  char *buf = buffers[state++%16];
+
+  if(!(amt >> 10)){
+    sprintf(buf, "%lluB", amt);
+    return buf;
+  }
+
+  if(!(amt >> 20)){
+    sprintf(buf, "%.1fk", (double)amt/0x400);
+    return buf;
+  }
+
+  if(!(amt >> 30)){
+    sprintf(buf, "%.1fM", (double)amt/0x100000);
+    return buf;
+  }
+
+  sprintf(buf, "%.1fG", (double)amt/0x40000000);
+  return buf;
+}

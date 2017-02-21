@@ -54,10 +54,16 @@ int main() {
     printw("\n");
     table_names();
 
-    // for (ProcessInfo temp: current_sys.processes){
-    // printw("\n");
-    // table_info(temp);
-    // }
+    int i = 0;
+    for (ProcessInfo temp: current_sys.processes){
+      if (i < 10){
+	printw("\n");
+	 printw("next process");
+	 table_info(temp);
+      }
+      if (i == 10) break;
+      i++;
+    }
       
     
     // Redraw the screen.
