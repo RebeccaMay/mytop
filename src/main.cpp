@@ -42,10 +42,15 @@ int main() {
     wclear(stdscr);
 
     SystemInfo current_sys = get_system_info();
+    SystemInfo last_sys = current_sys;
     uptime_info(current_sys.uptime);
     printw("\n");
     loadavg_info(current_sys.load_average);
     printw("\n");
+    for(int j = 0; j < current_sys.cpus.size(); j++){
+      cpu_info(current_sys, last_sys, j);                //FIXME
+      printw("\n");
+    }
     proc_info(current_sys);
     printw("\n");
     thread_info(current_sys);
@@ -58,8 +63,7 @@ int main() {
     for (ProcessInfo temp: current_sys.processes){
       if (i < 10){
 	printw("\n");
-	 printw("next process");
-	 table_info(temp);
+	table_info(temp);
       }
       if (i == 10) break;
       i++;
