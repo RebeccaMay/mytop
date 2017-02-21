@@ -53,6 +53,12 @@ int main() {
     memory_info();
     printw("\n");
     table_names();
+
+    // for (ProcessInfo temp: current_sys.processes){
+    // printw("\n");
+    // table_info(temp);
+    // }
+      
     
     // Redraw the screen.
     refresh();

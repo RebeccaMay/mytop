@@ -59,5 +59,10 @@ void table_names(){
   printw("%s", tbl_names);
 }
 
-void table_info(ProcessInfo& proc);
+void table_info(ProcessInfo& proc){
+  static char table_line[256];
+  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid, proc.rss, proc.state, proc.cpu_percent, (proc.utime + proc.stime), proc.command_line);
+
+   printw("%s", table_line);
+}
 
