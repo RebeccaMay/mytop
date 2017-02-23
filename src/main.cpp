@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ncurses.h>
 #include "../src/utils/format.h"
+#include "../src/utils/opts.h"
 
 using namespace std;
 
@@ -27,20 +28,20 @@ void exit_if_user_presses_q() {
 /**
  * Entry point for the program.
  */
-int main() {
+int main(int argc, char **argv) {
   // ncurses initialization
   initscr();
 
   // Don't show a cursor.
   curs_set(FALSE);
-
+  opts_init (argc, argv);
   // Set getch to return after 1000 milliseconds; this allows the program to
   // immediately respond to user input while not blocking indefinitely.
   timeout(1000);
 
   while (true) {
     wclear(stdscr);
-
+    
     SystemInfo current_sys = get_system_info();
     uptime_info(current_sys.uptime);
     printw("\n");
