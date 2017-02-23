@@ -25,7 +25,7 @@ void loadavg_info(LoadAverageInfo& loadavg){
   printw("%s", loadavg_buffer);
 }
 
-void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no){
+void cpu_info(SystemInfo& sys, size_t cpu_no){
   static char cpuinfo_buffer[80];
   
   double percent_user = (sys.cpus[cpu_no].user_time)/(double)(sys.cpus[cpu_no].total_time())*100;
@@ -73,7 +73,7 @@ void table_names(){
 
 void table_info(ProcessInfo& proc){
   static char table_line[256];
-  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid,format_bytes( proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)), proc.command_line.c_str());
+  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid, format_bytes(proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)), proc.command_line.c_str());
 
    printw("%s", table_line);
 }

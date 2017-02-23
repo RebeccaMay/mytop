@@ -42,13 +42,12 @@ int main() {
     wclear(stdscr);
 
     SystemInfo current_sys = get_system_info();
-    SystemInfo last_sys = get_system_info();
     uptime_info(current_sys.uptime);
     printw("\n");
     loadavg_info(current_sys.load_average);
     printw("\n");
     for(int j = 0; j < current_sys.cpus.size(); j++){
-      cpu_info(current_sys, last_sys, j);                //FIXME
+      cpu_info(current_sys, j);                //FIXME
       printw("\n");
     }
     proc_info(current_sys);
@@ -64,7 +63,7 @@ int main() {
       if (i < 10){
 	printw("\n");
 	table_info(temp);
-      }
+	}
       if (i == 10) break;
       i++;
     }

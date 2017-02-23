@@ -9,7 +9,7 @@
 
 void uptime_info(double uptime);
 void loadavg_info(LoadAverageInfo& loadavg);
-void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no);
+void cpu_info(SystemInfo& sys, size_t cpu_no);
 void proc_info(SystemInfo& sys);
 void thread_info(SystemInfo& sys);
 void  memory_info();
