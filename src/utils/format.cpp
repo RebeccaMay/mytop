@@ -28,11 +28,11 @@ void loadavg_info(LoadAverageInfo& loadavg){
 void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no){
   static char cpuinfo_buffer[80];
   
-  double percent_user = (sys.cpus[cpu_no].user_time - sys_last.cpus[cpu_no].user_time)/(double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time())*100;
+  double percent_user = (sys.cpus[cpu_no].user_time)/(double)(sys.cpus[cpu_no].total_time())*100;
 
-  double percent_kernel = (sys.cpus[cpu_no].total_system_time() - sys_last.cpus[cpu_no].total_system_time()) / (double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time()) * 100;
+  double percent_kernel = (sys.cpus[cpu_no].total_system_time()) / (double)(sys.cpus[cpu_no].total_time()) * 100;
 
-  double percent_idle = (sys.cpus[cpu_no].total_idle_time() - sys_last.cpus[cpu_no].total_idle_time()) / (double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time()) * 100;
+  double percent_idle = (sys.cpus[cpu_no].total_idle_time()) / (double)(sys.cpus[cpu_no].total_time()) * 100;
 
   sprintf(cpuinfo_buffer, "Cpu%c: %5.1f%% user, %5.1f%% kernel, %5.1f%% idle", cpu_no?'0' + (char)cpu_no-1: 'T', percent_user, percent_kernel, percent_idle);
 

@@ -42,7 +42,7 @@ int main() {
     wclear(stdscr);
 
     SystemInfo current_sys = get_system_info();
-    SystemInfo last_sys = current_sys;
+    SystemInfo last_sys = get_system_info();
     uptime_info(current_sys.uptime);
     printw("\n");
     loadavg_info(current_sys.load_average);
