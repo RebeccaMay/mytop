@@ -1,5 +1,6 @@
 //file to populate functions to format and then print all outputs
 #include "format.h"
+#include "opts.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include <string.h>
-#include "opts.h"
+#include "flags.h"
 
 struct progopts opts;
 
