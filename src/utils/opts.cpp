@@ -3,6 +3,7 @@
 #include <getopt.h>
 #include <string.h>
 #include "opts.h"
+#include <ncurses.h>
 
 struct progopts opts;
 
