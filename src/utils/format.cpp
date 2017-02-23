@@ -73,7 +73,7 @@ void table_names(){
 
 void table_info(ProcessInfo& proc){
   static char table_line[256];
-  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid,format_bytes( proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)/sysconf(_SC_CLK_TCK)), proc.command_line.c_str());
+  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid,format_bytes( proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)), proc.command_line.c_str());
 
    printw("%s", table_line);
 }
