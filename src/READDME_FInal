@@ -1,0 +1,16 @@
+Name: Rebecca May
+
+My project contains the following files:
+
+main.cpp: Does exactly what you expect it to do, initializes the screen and has a while loop to keep refreshing all of the information
+
+format.{h, cpp}: This contains a list of functions that formats all of the information parsed from each file and then prints it out. These functions are all called within the while loop in main every time the specific time period has passed for the delay
+
+opts.{h, cpp}: This file is very similar to the option provided for reference online to create the flags. It contains a function to initialize the flags and then uses switch statements to see which flag has been selected and then behave appropriately by updating the delay or displaying the help information.
+
+The rest of the files were provided for us. All function stubs have been completed. The only added function is in system_info.{h, cpp} to calculate the percentage of CPU utilization for each process in the tale being displayed
+
+Unfortunately, I did not have time to implement any unusual or interesting features in this program. Although, I do think that my implementation is easier to read quickly than the actual top function call.
+
+I spent well over 20 hours on this project
+
