@@ -16,7 +16,7 @@ NAME = mytop
 
 # We default PROC_ROOT to ./proc for tests. This gets overridden when building
 # the binary to the real location (/proc).
-PROC_ROOT = ./proc
+PROC_ROOT = /proc
 
 # If running on Alamode machines (which use a slow, distributed file system),
 # put the fake proc folder in /dev/shm, which is an in-memory file system.
