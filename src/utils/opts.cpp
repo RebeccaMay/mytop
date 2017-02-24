@@ -11,17 +11,15 @@ struct progopts opts;
  * print help
  */
 void opts_help(char **argv, int exit_status) {
-    printf("Shadow Recruit top:\n"
-           "Usage: %s [OPTION ...]\n"
-           "\n"
-           "option          default     description\n"
-           "======          =======     ===========\n"
-           "-d --delay      10          tenths of seconds to delay between updates\n"
-           "-s --sort-key   CPU         sort by PID, CPU, MEM or TIME\n"
-           "-m --max-proc   0           maximum processes to print in table (0 for no max)\n"
-           "-h --help                   this message\n",
-           argv[0]
-      );
+
+  printf("option, description\n");
+  printf("-d --delay, changes the tenths of seconds to delay between updates");
+  printf("\n");
+  printf("-s --sort-key, can sort table by PID, CPU, MEM or TIME");
+  printf("\n");
+  printf("-h --help, displays this message");
+  printf(argv[0]);
+  
     exit(exit_status);
 }
 
