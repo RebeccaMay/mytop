@@ -32,12 +32,8 @@ void exit_if_user_presses_q() {
 int main(int argc, char **argv) {
   // ncurses initialization
   initscr();
-<<<<<<< HEAD
   opts_init(argc, argv);
-=======
   SystemInfo original_sys = get_system_info();
-
->>>>>>> revert
   // Don't show a cursor.
   curs_set(FALSE);
   opts_init (argc, argv);

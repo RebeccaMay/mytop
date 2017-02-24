@@ -1,13 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
-#include <string.h>
-<<<<<<< HEAD
-#include "flags.h"
-=======
 #include "opts.h"
 #include <ncurses.h>
->>>>>>> revert
+
 
 struct progopts opts;
 
