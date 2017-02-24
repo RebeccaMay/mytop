@@ -12,13 +12,7 @@ struct progopts opts;
  */
 void opts_help(char **argv, int exit_status) {
 
-  printf("option, description\n");
-  printf("-d --delay, changes the tenths of seconds to delay between updates");
-  printf("\n");
-  printf("-s --sort-key, can sort table by PID, CPU, MEM or TIME");
-  printf("\n");
-  printf("-h --help, displays this message");
-  printf(argv[0]);
+  printf("This program is an implemtation of the top command. The flag -d or --delay followed by an integer will cause a delay in updates of that many seconds. The flag -s or --sort-key can sort the table by the following: PID, CPU, MEM, or TIME. The flag -h or --help shows you this window." );
   
     exit(exit_status);
 }
