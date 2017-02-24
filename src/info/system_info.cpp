@@ -80,5 +80,15 @@ SystemInfo get_system_info() {
   return sysi;
 }
 
-
-
+double calc_process_cpu(SystemInfo& sys, SystemInfo& sys_original){
+  std::unordered_map <int, ProcessInfo*> lproc;
+  for (ProcessInfo& proc: sys_original.processes){
+    lproc[proc.pid] = &proc;
+  }
+  for (ProcessInfo& proc: sys.processes){
+    if (lproc.count(proc.pid)){
+      proc.cpu_percent = (double)((proc.utime+proc.stime) - (lproc[proc.pid]->utime +lproc[proc.pid]->stime)) / (sys.cpus[1].total_time() - sys_original.cpus[1].total_time()) *100;
+    }
+    else proc.cpu_percent = 0;
+  }
+}

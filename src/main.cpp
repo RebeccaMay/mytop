@@ -31,6 +31,7 @@ void exit_if_user_presses_q() {
 int main(int argc, char **argv) {
   // ncurses initialization
   initscr();
+  SystemInfo original_sys = get_system_info();
 
   // Don't show a cursor.
   curs_set(FALSE);
@@ -48,7 +49,7 @@ int main(int argc, char **argv) {
     loadavg_info(current_sys.load_average);
     printw("\n");
     for(int j = 0; j < current_sys.cpus.size(); j++){
-      cpu_info(current_sys, j);                //FIXME
+      cpu_info(current_sys, j);               
       printw("\n");
     }
     proc_info(current_sys);
@@ -63,7 +64,7 @@ int main(int argc, char **argv) {
     for (ProcessInfo temp: current_sys.processes){
       if (i < 10){
 	printw("\n");
-	table_info(temp);
+	table_info(temp, current_sys, original_sys);
 	}
       if (i == 10) break;
       i++;

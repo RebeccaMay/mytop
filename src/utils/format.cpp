@@ -71,11 +71,12 @@ void table_names(){
   printw("%s", tbl_names);
 }
 
-void table_info(ProcessInfo& proc){
+void table_info(ProcessInfo& proc, SystemInfo & sys1, SystemInfo& sys2 ){
   static char table_line[256];
+  proc.cpu_percent = calc_process_cpu(sys1, sys2);
   sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid, format_bytes(proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)), proc.command_line.c_str());
-
-   printw("%s", table_line);
+  
+  printw("%s", table_line);
 }
 
 char * format_time(int secs){

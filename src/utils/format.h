@@ -14,7 +14,7 @@ void proc_info(SystemInfo& sys);
 void thread_info(SystemInfo& sys);
 void  memory_info();
 void table_names();
-void table_info(ProcessInfo& proc);
+void table_info(ProcessInfo& proc, SystemInfo& sys1, SystemInfo& sys2);
 
 char * format_time(int seconds);
 char * format_bytes(unsigned long long amt);
