@@ -24,7 +24,6 @@ void opts_init(int argc, char **argv) {
     const static struct option longopts[] = {
         {"delay", required_argument, NULL, 'd'},
         {"sort-key", required_argument, NULL, 's'},
-        {"max-proc", required_argument, NULL, 'm'},
         {"help", no_argument, NULL, 'h'},
         {NULL, 0, NULL, 0}
     };
@@ -35,9 +34,6 @@ void opts_init(int argc, char **argv) {
     while ((optchar = getopt_long(argc, argv, "d:s:m:h", longopts, &i)) != -1) {
         switch (optchar) {
             case 0:
-                break;
-            case 'm':
-                sscanf(optarg, "%d", &opts.max_proc);
                 break;
             case 'd':
                 sscanf(optarg, "%d", &opts.delay_tenths);
