@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
   opts_init (argc, argv);
   // Set getch to return after 1000 milliseconds; this allows the program to
   // immediately respond to user input while not blocking indefinitely.
-  timeout(1000);
+  timeout(1000*opts.delay_tenths);
 
   while (true) {
     wclear(stdscr);
