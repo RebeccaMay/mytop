@@ -5,7 +5,8 @@
 #include <cstdlib>
 #include <ncurses.h>
 #include "../src/utils/format.h"
-#includ "../src/utils/opts.h"
+#include "../src/utils/opts.h"
+
 
 using namespace std;
 
@@ -28,28 +29,32 @@ void exit_if_user_presses_q() {
 /**
  * Entry point for the program.
  */
-int main() {
+int main(int argc, char **argv) {
   // ncurses initialization
   initscr();
+<<<<<<< HEAD
   opts_init(argc, argv);
+=======
+  SystemInfo original_sys = get_system_info();
+
+>>>>>>> revert
   // Don't show a cursor.
   curs_set(FALSE);
-
+  opts_init (argc, argv);
   // Set getch to return after 1000 milliseconds; this allows the program to
   // immediately respond to user input while not blocking indefinitely.
   timeout(1000*opts.delay_tenths);
 
   while (true) {
     wclear(stdscr);
-
+    
     SystemInfo current_sys = get_system_info();
-    SystemInfo last_sys = current_sys;
     uptime_info(current_sys.uptime);
     printw("\n");
     loadavg_info(current_sys.load_average);
     printw("\n");
     for(int j = 0; j < current_sys.cpus.size(); j++){
-      cpu_info(current_sys, last_sys, j);                //FIXME
+      cpu_info(current_sys, j);               
       printw("\n");
     }
     proc_info(current_sys);
@@ -64,8 +69,8 @@ int main() {
     for (ProcessInfo temp: current_sys.processes){
       if (i < 10){
 	printw("\n");
-	table_info(temp);
-      }
+	table_info(temp, current_sys, original_sys);
+	}
       if (i == 10) break;
       i++;
     }

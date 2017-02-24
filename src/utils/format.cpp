@@ -26,14 +26,14 @@ void loadavg_info(LoadAverageInfo& loadavg){
   printw("%s", loadavg_buffer);
 }
 
-void cpu_info(SystemInfo& sys, SystemInfo& sys_last, size_t cpu_no){
+void cpu_info(SystemInfo& sys, size_t cpu_no){
   static char cpuinfo_buffer[80];
   
-  double percent_user = (sys.cpus[cpu_no].user_time - sys_last.cpus[cpu_no].user_time)/(double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time())*100;
+  double percent_user = (sys.cpus[cpu_no].user_time)/(double)(sys.cpus[cpu_no].total_time())*100;
 
-  double percent_kernel = (sys.cpus[cpu_no].total_system_time() - sys_last.cpus[cpu_no].total_system_time()) / (double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time()) * 100;
+  double percent_kernel = (sys.cpus[cpu_no].total_system_time()) / (double)(sys.cpus[cpu_no].total_time()) * 100;
 
-  double percent_idle = (sys.cpus[cpu_no].total_idle_time() - sys_last.cpus[cpu_no].total_idle_time()) / (double)(sys.cpus[cpu_no].total_time() - sys_last.cpus[cpu_no].total_time()) * 100;
+  double percent_idle = (sys.cpus[cpu_no].total_idle_time()) / (double)(sys.cpus[cpu_no].total_time()) * 100;
 
   sprintf(cpuinfo_buffer, "Cpu%c: %5.1f%% user, %5.1f%% kernel, %5.1f%% idle", cpu_no?'0' + (char)cpu_no-1: 'T', percent_user, percent_kernel, percent_idle);
 
@@ -72,11 +72,12 @@ void table_names(){
   printw("%s", tbl_names);
 }
 
-void table_info(ProcessInfo& proc){
+void table_info(ProcessInfo& proc, SystemInfo & sys1, SystemInfo& sys2 ){
   static char table_line[256];
-  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid,format_bytes( proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)/sysconf(_SC_CLK_TCK)), proc.command_line.c_str());
-
-   printw("%s", table_line);
+  proc.cpu_percent = calc_process_cpu(sys1, sys2);
+  sprintf(table_line, "%-5d %-7s %c %-5.1f %-8ul %.220s", proc.pid, format_bytes(proc.rss*sysconf(_SC_PAGESIZE)), proc.state, proc.cpu_percent, format_time((proc.utime + proc.stime)), proc.command_line.c_str());
+  
+  printw("%s", table_line);
 }
 
 char * format_time(int secs){

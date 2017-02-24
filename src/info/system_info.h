@@ -70,3 +70,6 @@ struct SystemInfo {
  * about the system at a given point in time.
  */
 SystemInfo get_system_info();
+
+double calc_process_cpu(SystemInfo& sys, SystemInfo& sys_original);
+
